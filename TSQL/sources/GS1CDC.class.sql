@@ -12,7 +12,7 @@
 --                                                                     -
 ------------------------------------------------------------------------
 
-USE [tempdb];
+USE [GS1CDC];
 GO
 
 DECLARE @Msg NVARCHAR(MAX);
@@ -144,7 +144,7 @@ AS BEGIN
 END;
 GO
 
--- GTIN14
+-- GTIN-14
 CREATE FUNCTION GS1CDC.Private_GetEAN14CheckDigit
 (
   @ACode AS VARCHAR(13)
@@ -208,15 +208,15 @@ AS BEGIN
   SET @LCheckDigit = -1;
 
   IF LEN(@ACode) = 7
-    SELECT @LCheckDigit = GS1CDC.Private_GetGS1EAN8CheckDigit(@ACode);
+    SELECT @LCheckDigit = GS1CDC.Private_GetEAN8CheckDigit(@ACode);
   ELSE IF LEN(@ACode) = 11
-    SELECT @LCheckDigit = GS1CDC.Private_GetGS1EAN12CheckDigit(@ACode);
+    SELECT @LCheckDigit = GS1CDC.Private_GetEAN12CheckDigit(@ACode);
   ELSE IF LEN(@ACode) = 12
-    SELECT @LCheckDigit = GS1CDC.Private_GetGS1EAN13CheckDigit(@ACode);
+    SELECT @LCheckDigit = GS1CDC.Private_GetEAN13CheckDigit(@ACode);
   ELSE IF LEN(@ACode) = 13
-    SELECT @LCheckDigit = GS1CDC.Private_GetGS1EAN14CheckDigit(@ACode);
+    SELECT @LCheckDigit = GS1CDC.Private_GetEAN14CheckDigit(@ACode);
   ELSE IF LEN(@ACode) = 17
-    SELECT @LCheckDigit = GS1CDC.Private_GetGS1SSCCCheckDigit(@ACode);
+    SELECT @LCheckDigit = GS1CDC.Private_GetSSCCCheckDigit(@ACode);
   ELSE BEGIN
     RETURN CAST('The number you entered is not supported as GS1 key. Please try again!' AS INTEGER);
   END
@@ -230,6 +230,3 @@ BEGIN
   EXEC GS1CDC.DropAllObjects;
 END;
 GO
-
---SELECT GS1CDC.GetCheckDigit('629104150021')
---SELECT GS1CDC.GetCheckDigit('621')

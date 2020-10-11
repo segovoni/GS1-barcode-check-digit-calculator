@@ -1,0 +1,71 @@
+object frmCheckDigitCalculator: TfrmCheckDigitCalculator
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Check Digit Barcode Calculator'
+  ClientHeight = 168
+  ClientWidth = 499
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnCalculate: TButton
+    Left = 8
+    Top = 84
+    Width = 483
+    Height = 76
+    Caption = 'Calculate'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btnCalculateClick
+  end
+  object edtBarcode: TLabeledEdit
+    Left = 8
+    Top = 30
+    Width = 409
+    Height = 37
+    EditLabel.Width = 56
+    EditLabel.Height = 19
+    EditLabel.Caption = 'Barcode'
+    EditLabel.Font.Charset = DEFAULT_CHARSET
+    EditLabel.Font.Color = clWindowText
+    EditLabel.Font.Height = -16
+    EditLabel.Font.Name = 'Tahoma'
+    EditLabel.Font.Style = []
+    EditLabel.ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    TextHint = 'Barcode without check digit'
+  end
+  object edtCheckDigit: TEdit
+    Left = 423
+    Top = 30
+    Width = 68
+    Height = 37
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clHighlight
+    Font.Height = -24
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    Text = '0'
+  end
+end

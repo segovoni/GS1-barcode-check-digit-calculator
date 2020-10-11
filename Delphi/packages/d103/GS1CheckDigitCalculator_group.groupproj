@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{701AEDB7-69C1-431A-AA94-134050C7BC1A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GS1CheckDigitCalculatorRT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GS1CheckDigitCalculator.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GS1CheckDigitCalculatorRT">
+        <MSBuild Projects="GS1CheckDigitCalculatorRT.dproj"/>
+    </Target>
+    <Target Name="GS1CheckDigitCalculatorRT:Clean">
+        <MSBuild Projects="GS1CheckDigitCalculatorRT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GS1CheckDigitCalculatorRT:Make">
+        <MSBuild Projects="GS1CheckDigitCalculatorRT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GS1CheckDigitCalculator">
+        <MSBuild Projects="GS1CheckDigitCalculator.dproj"/>
+    </Target>
+    <Target Name="GS1CheckDigitCalculator:Clean">
+        <MSBuild Projects="GS1CheckDigitCalculator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GS1CheckDigitCalculator:Make">
+        <MSBuild Projects="GS1CheckDigitCalculator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GS1CheckDigitCalculatorRT;GS1CheckDigitCalculator"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GS1CheckDigitCalculatorRT:Clean;GS1CheckDigitCalculator:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GS1CheckDigitCalculatorRT:Make;GS1CheckDigitCalculator:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

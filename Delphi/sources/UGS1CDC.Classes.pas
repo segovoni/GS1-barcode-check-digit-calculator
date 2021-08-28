@@ -5,7 +5,7 @@ interface
 type
   /// <summary>
   ///   Abstract class from which to derive classes that implement
-  ///   specific check digit calculation alborithms
+  ///   specific check digit calculation algorithms
   /// </summary>
   THandler = class abstract
   public
